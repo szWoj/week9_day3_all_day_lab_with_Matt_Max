@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const BookingForm = ({postBooking})=>
+const BookingForm = ({dataPost})=>
 {
     const [nameInput, setNameInput] = useState('');
     const [emailInput, setEmailInput] = useState('');
@@ -24,7 +24,7 @@ const BookingForm = ({postBooking})=>
             email: emailInput,
             check_in: false
         }
-        postBooking(data)
+        dataPost(data)
         setNameInput('')
         setEmailInput('')
     }
@@ -35,9 +35,9 @@ const BookingForm = ({postBooking})=>
 
         <form onSubmit={handleFormSubmit}>
             <label htmlFor='name-input'>Input full name</label>
-            <input type='text' id='name-input' value={nameInput} onChange={handleName}></input>
+            <input type='text' id='name-input' value={nameInput} onChange={handleName} required></input>
             <label htmlFor='email-input'>Input email</label>
-            <input type='text' id='email-input' value={emailInput} onChange={handleEmail}></input>
+            <input type='text' id='email-input' value={emailInput} onChange={handleEmail} required></input>
             <button type='submit'>Save</button>
         </form>
     )

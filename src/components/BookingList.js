@@ -1,14 +1,14 @@
 import React from 'react';
 import BookingItem from './BookingItem';
 
-const BookingList = ({bookings, deleteBooking, updateBooking})=>
+const BookingList = ({bookings, dataDelete, dataUpdate})=>
 
 {
 
     const bookingList = bookings.map((booking, index)=>
     {
         return(
-            <BookingItem booking={booking} index={index} key={booking._id} deleteBooking={deleteBooking} updateBooking={updateBooking}/>
+            <BookingItem booking={booking} index={index} key={booking._id} dataDelete={dataDelete} dataUpdate={dataUpdate}/>
         )
     })
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const BookingItem = ({booking, deleteBooking, updateBooking, index}) => 
+const BookingItem = ({booking, dataDelete, dataUpdate, index}) => 
 {
     const handleDelete = () =>
     {
-        deleteBooking(booking._id)
+        dataDelete(booking._id)
     }
 
     const handleCheckIn = ()=>
@@ -15,7 +15,7 @@ const BookingItem = ({booking, deleteBooking, updateBooking, index}) =>
             email: booking.email,
             check_in: !booking.check_in
         }
-        updateBooking(data, id, index)
+        dataUpdate(data, id, index)
     }
 
     return(
