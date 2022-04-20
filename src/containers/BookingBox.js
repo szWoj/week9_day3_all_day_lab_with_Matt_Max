@@ -9,7 +9,7 @@ const BookingBox = ()=>
     useEffect(()=>
     {
         getBookings();
-    },[bookings])
+    },[])
     
     const getBookings = ()=>
     {
@@ -34,14 +34,39 @@ const BookingBox = ()=>
         })
     }
 
-    
+    const deleteBooking = (id)=>
+    {
+        const newBookings = [...bookings]
+        fetch(`http://localhost:4000/api/bookings/${id}`,
+        {
+            method: 'DELETE'
+        })
+        newBookings.splice(newBookings.indexOf(id), 1)
+        setBookings(newBookings)
+        
+    }
+
+    const updateBooking = (data, id, index) =>
+    {
+        const newBookings = [...bookings]
+        fetch(`http://localhost:4000/api/bookings/${id}`,
+        {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        })
+        newBookings[index].check_in = data.check_in
+        setBookings(newBookings)
+    }
+
+
 
 
     return (
         <>
         <h1>Hi</h1>
         <BookingForm postBooking={postBooking}/>
-        <BookingList bookings={bookings}/>
+        <BookingList bookings={bookings} deleteBooking={deleteBooking} updateBooking={updateBooking}/>
         
         </>
     )
